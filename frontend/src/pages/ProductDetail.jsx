@@ -1,7 +1,7 @@
 import {useParams,Link} from 'react-router-dom';
 import {useEffect,useState} from 'react';
 import {searchProductByBarCode} from '../services/api';
-import Loader from '../components/LoadMoreButton';
+import Loader from '../components/Loader';
 
 
 function ProductDetail(){
