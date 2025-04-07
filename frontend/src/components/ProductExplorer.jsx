@@ -3,7 +3,7 @@ import Loader from "./Loader";
 import LoadMoreButton from "./LoadMoreButton";
 import SearchFilterBar from "./SearchFilterBar";
 import ProductGrid from "./ProductGrid";
-
+                                 
 function ProductExplorer() {
   const {
     products,

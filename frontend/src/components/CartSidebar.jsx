@@ -1,5 +1,6 @@
 import { useCart } from "../context/CartContext";
 import { X } from "lucide-react";
+import { Link } from "react-router-dom";
 
 function CartSidebar({ isOpen, onClose }) {
   const { cartItems, removeFromCart, clearCart } = useCart();
@@ -24,19 +25,30 @@ function CartSidebar({ isOpen, onClose }) {
           cartItems.map((item) => (
             <div
               key={item.code}
-              className="border p-3 rounded flex justify-between items-center"
+              className="border p-3 rounded flex gap-3 items-center"
             >
-              <div>
-                <p className="font-medium text-sm line-clamp-1">
+              <Link to={`/product/${item.code}`} onClick={onClose} className="flex-shrink-0">
+                <img
+                  src={item.image_url || "https://via.placeholder.com/60"}
+                  alt={item.product_name}
+                  className="w-14 h-14 object-cover rounded border"
+                />
+              </Link>
+              <div className="flex-1 text-sm">
+                <Link
+                  to={`/product/${item.code}`}
+                  onClick={onClose}
+                  className="font-medium text-indigo-600 hover:underline block"
+                >
                   {item.product_name || "Unnamed Product"}
-                </p>
+                </Link>
                 <p className="text-xs text-gray-500">
                   {item.nutrition_grades?.toUpperCase() || "N/A"}
                 </p>
               </div>
               <button
                 onClick={() => removeFromCart(item.code)}
-                className="text-sm text-red-500 hover:underline"
+                className="text-xs text-red-500 hover:underline"
               >
                 Remove
               </button>

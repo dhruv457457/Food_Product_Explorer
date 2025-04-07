@@ -14,7 +14,7 @@ function App() {
       <CartSidebar isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/product/:id" element={<ProductDetail />} />
+        <Route path="/product/:barcode" element={<ProductDetail />} />
       </Routes>
     </div>
   );

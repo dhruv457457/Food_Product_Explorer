@@ -46,7 +46,7 @@ function ProductDetail(){
           <div>
             <h1 className="text-2xl font-bold mb-2 text-gray-800">{product.product_name || 'Unnamed Product'}</h1>
             <p className="text-gray-600 mb-4">{product.categories || 'No category available'}</p>
-  
+                                                      
             <p className="mb-2"><strong>Ingredients:</strong> {product.ingredients_text || 'Not available'}</p>
             <p className="mb-2"><strong>Labels:</strong> {product.labels || 'None'}</p>
             <p className="mb-2"><strong>Nutrition Grade:</strong> 
