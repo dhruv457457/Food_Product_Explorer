@@ -9,9 +9,9 @@ function ProductCard({ product, index }) {
   const { addToCart } = useCart();
 
   const handleAddToCart = () => {
-    addToCart(product);
+    addToCart(product);                      
     toast.success(`${product.product_name || "Product"} added to cart!`);
-  };
+  };                    
 
   const grade = (product.nutrition_grades || "N/A").toUpperCase();
 

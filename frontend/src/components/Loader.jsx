@@ -1,17 +1,8 @@
-function Loader({ size = 12, center = true, message = "Loading..." }) {
-  const spinnerSize = `h-${size} w-${size}`;
-  const containerClass = center
-    ? "flex flex-col justify-center items-center h-40"
-    : "inline-flex items-center gap-2";
-
+function Loader({ message = "Loading..." }) {
   return (
-    <div className={containerClass}>
-      <div
-        className={`${spinnerSize} animate-spin border-[3px] border-indigo-500 border-t-transparent rounded-full`}
-      ></div>
-      {message && (
-        <p className="mt-2 text-sm text-gray-600 text-center">{message}</p>
-      )}
+    <div className="flex flex-col items-center justify-center py-20 text-center text-gray-600">
+      <div className="animate-spin rounded-full h-10 w-10 border-4 border-indigo-600 border-t-transparent mb-4" />
+      <p className="text-sm font-medium">{message}</p>
     </div>
   );
 }

@@ -30,10 +30,10 @@ function SearchFilterBar({
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        {/* Entire row on desktop */}
+        {}
         <div className="flex flex-col md:flex-row md:items-end md:gap-6 w-full">
 
-          {/* Search - full row on mobile, part of row on desktop */}
+          {}
           <div className="w-full md:flex-1 mb-4 md:mb-0">
             <label className="text-sm text-gray-600 mb-1 block font-medium">
               Search Products
@@ -56,9 +56,9 @@ function SearchFilterBar({
             </div>
           </div>
 
-          {/* Category + Sort + Scan - row on mobile & desktop */}
+          {}
           <div className="flex flex-row gap-4 w-full md:w-auto">
-            {/* Category */}
+            {}
             <div className="flex-1 min-w-[100px]">
               <label className="text-sm text-gray-600 mb-1 block font-medium">
                 Category
@@ -76,7 +76,7 @@ function SearchFilterBar({
               </select>
             </div>
 
-            {/* Sort */}
+            {}
             <div className="flex-1 min-w-[100px]">
               <label className="text-sm text-gray-600 mb-1 block font-medium">
                 Sort By
@@ -93,7 +93,7 @@ function SearchFilterBar({
               </select>
             </div>
 
-            {/* Scanner */}
+            {}
             <div className="w-[60px] flex flex-col justify-end">
               <label className="text-sm text-gray-600 mb-1 block font-medium">
                 Scan
@@ -109,7 +109,7 @@ function SearchFilterBar({
         </div>
       </motion.div>
 
-      {/* Scanner Modal */}
+      {}
       <AnimatePresence>
         {showScanner && (
           <motion.div

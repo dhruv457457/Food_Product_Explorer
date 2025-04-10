@@ -18,7 +18,7 @@ function BarcodeScanner({ onDetected, onClose }) {
       })
       .catch((err) => console.error("Camera error:", err));
   
-    // Clean up the camera stream manually
+    
     return () => {
       const video = videoRef.current;
       if (video && video.srcObject) {

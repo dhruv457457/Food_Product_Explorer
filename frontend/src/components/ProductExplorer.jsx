@@ -1,20 +1,27 @@
 import React from "react";
 import ProductCard from "./ProductCard";
+import Loader from "./Loader";
+
 
 function ProductExplorer({ products, loading, error, hasMore, onLoadMore }) {
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <Loader message="Loading Products..." />;
   if (error) return <p>Error: {error.message}</p>;
 
   return (
     <div className="w-full">
-      {/* Render Product Cards */}
+      {}
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-        {products.map((product) => (
-          <ProductCard key={product.id || product.code} product={product} />
-        ))}
+      {products.map((product, index) => (
+  <ProductCard
+    key={`${product.code || product.id || index}-${index}`}
+    product={product}
+    index={index}
+  />
+))}
+
       </div>
 
-      {/* Load More Button */}
+      {}
       {hasMore && (
         <div className="mt-6 text-center">
           <button
