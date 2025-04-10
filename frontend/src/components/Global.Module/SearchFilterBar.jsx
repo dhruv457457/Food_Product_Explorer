@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getCategories } from "../services/api";
+import { getCategories } from "../../services/api";
 import { Camera, X } from "lucide-react";
 import BarcodeScanner from "./BarcodeScanner";
 import { motion, AnimatePresence } from "framer-motion";

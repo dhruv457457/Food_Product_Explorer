@@ -1,6 +1,6 @@
 import React from "react";
 import ProductCard from "./ProductCard";
-import Loader from "./Loader";
+import Loader from "../Global.Module/Loader";
 
 
 function ProductExplorer({ products, loading, error, hasMore, onLoadMore }) {

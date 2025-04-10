@@ -1,13 +1,13 @@
 import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 
-import headerImg from "../components/h2.png";
-import ProductExplorer from "../components/ProductExplorer";
-import SearchFilterBar from "../components/SearchFilterBar";
-import BarcodeScanner from "../components/BarcodeScanner";
+import headerImg from "../assets/h2.png";
+import ProductExplorer from "../components/Home.Module/ProductExplorer";
+import SearchFilterBar from "../components/Global.Module/SearchFilterBar";
+import BarcodeScanner from "../components/Global.Module/BarcodeScanner";
 import useProductFetcher from "../hooks/useProductFetcher";
-import Navbar from "../components/Navbar";
-import CartSidebar from "../components/CartSidebar";
+import Navbar from "../components/Global.Module/Navbar";
+import CartSidebar from "../components/Global.Module/CartSidebar";
 
 function Home() {
   const {

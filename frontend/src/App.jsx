@@ -2,8 +2,8 @@ import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import ProductDetail from "./pages/ProductDetail";
-import Navbar from "./components/Navbar";
-import CartSidebar from "./components/CartSidebar";
+import Navbar from "./components/Global.Module/Navbar";
+import CartSidebar from "./components/Global.Module/CartSidebar";
 
 function App() {
   const [isCartOpen, setIsCartOpen] = useState(false);

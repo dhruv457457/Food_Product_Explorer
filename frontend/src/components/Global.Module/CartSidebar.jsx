@@ -1,4 +1,4 @@
-import { useCart } from "../context/CartContext";
+import { useCart } from "../../context/CartContext";
 import { X } from "lucide-react";
 import { Link } from "react-router-dom";
 

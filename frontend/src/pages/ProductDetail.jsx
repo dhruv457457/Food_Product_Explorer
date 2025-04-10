@@ -1,10 +1,10 @@
 import { useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { searchProductByBarCode } from "../services/api";
-import Loader from "../components/Loader";
+import Loader from "../components/Global.Module/Loader";
 import { useCart } from "../context/CartContext";
 import toast from "react-hot-toast";
-import ProductImage from "../components/ProductDetail/ProductImage";
+import ProductImage from "../components/ProductDetail.Module/ProductImage";
 import { ShoppingCart, Share2 } from "lucide-react";
 
 function ProductDetail() {
