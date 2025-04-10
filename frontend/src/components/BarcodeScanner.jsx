@@ -1,30 +1,53 @@
 import { useEffect, useRef } from "react";
-import { Html5QrcodeScanner } from "html5-qrcode";
+import { BrowserMultiFormatReader } from "@zxing/browser";
 
 function BarcodeScanner({ onDetected, onClose }) {
-  const scannerRef = useRef(null);
+  const videoRef = useRef(null);
+  const fileInputRef = useRef(null);
+  const codeReader = useRef(null);
 
   useEffect(() => {
-    const scanner = new Html5QrcodeScanner("scanner", {
-      fps: 10,
-      qrbox: 250,
-    });
-
-    scanner.render(
-      (decodedText) => {
-        onDetected(decodedText);
-        scanner.clear();
-        onClose();
-      },
-      (error) => {
-        console.warn("Scanning error:", error);
-      }
-    );
-
+    codeReader.current = new BrowserMultiFormatReader();
+  
+    codeReader.current
+      .decodeFromVideoDevice(null, videoRef.current, (result, err) => {
+        if (result) {
+          onDetected(result.getText());
+          onClose();
+        }
+      })
+      .catch((err) => console.error("Camera error:", err));
+  
+    // Clean up the camera stream manually
     return () => {
-      scanner.clear().catch((err) => console.error("Failed to clear scanner:", err));
+      const video = videoRef.current;
+      if (video && video.srcObject) {
+        const stream = video.srcObject;
+        const tracks = stream.getTracks();
+        tracks.forEach((track) => track.stop());
+      }
     };
   }, [onDetected, onClose]);
+  
+  
+
+  const handleFileChange = async (e) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    const imageUrl = URL.createObjectURL(file);
+
+    try {
+      const result = await codeReader.current.decodeFromImageUrl(imageUrl);
+      if (result) {
+        onDetected(result.getText());
+        onClose();
+      }
+    } catch (err) {
+      console.error("Image decode error:", err);
+      alert("Could not detect barcode from image.");
+    }
+  };
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-60 flex justify-center items-center z-50">
@@ -38,7 +61,24 @@ function BarcodeScanner({ onDetected, onClose }) {
             ✕
           </button>
         </div>
-        <div id="scanner" className="w-full h-64" ref={scannerRef} />
+
+        <video ref={videoRef} className="w-full h-64 mb-2" />
+
+        <div className="flex justify-between items-center mt-2">
+          <button
+            onClick={() => fileInputRef.current.click()}
+            className="text-indigo-600 hover:underline text-sm"
+          >
+            📷 Upload from Gallery
+          </button>
+          <input
+            type="file"
+            accept="image/*"
+            ref={fileInputRef}
+            onChange={handleFileChange}
+            className="hidden"
+          />
+        </div>
       </div>
     </div>
   );

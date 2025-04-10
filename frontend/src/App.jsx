@@ -9,7 +9,7 @@ function App() {
   const [isCartOpen, setIsCartOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-slate-100 font-sans">
+    <div className="min-h-screen bg-[#f3f4f6] font-sans">
       <Navbar onCartToggle={() => setIsCartOpen(true)} />
       <CartSidebar isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
       <Routes>
@@ -21,4 +21,3 @@ function App() {
 }
 
 export default App;
-

@@ -1,46 +1,36 @@
-import useProductFetcher from "../hooks/useProductFetcher";
+import React from "react";
 import Loader from "./Loader";
 import LoadMoreButton from "./LoadMoreButton";
-import SearchFilterBar from "./SearchFilterBar";
 import ProductGrid from "./ProductGrid";
-                                 
-function ProductExplorer() {
-  const {
-    products,
-    loading,
-    error,
-    hasMore,
-    searchByName,
-    searchByBarcode,
-    sortProducts,
-    loadMore,
-    setCategory,
-  } = useProductFetcher();
+import ProductCard from "./ProductCard";
+
+function ProductExplorer({ products, loading, error, hasMore, onLoadMore }) {
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error.message}</p>;
 
   return (
-    <div>
-      <SearchFilterBar
-        onSearch={searchByName}
-        onBarcodeSearch={searchByBarcode}
-        onCategoryChange={setCategory}
-        onSortChange={sortProducts}
-      />
+    <div className="w-full">
+      {/* Responsive Grid Layout */}
+      <div className="grid grid-cols-2 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+        {products.map((product) => (
+          <ProductCard key={product.id} product={product} />
+        ))}
+      </div>
 
-      {error && <p className="text-red-500 mb-4">{error}</p>}
-
-      {loading && products.length === 0 ? (
-        <Loader />
-      ) : products.length === 0 ? (
-        <p className="text-gray-500">No products found.</p>
-      ) : (
-        <ProductGrid products={products} />
-      )}
-
-      {!loading && hasMore && products.length > 0 && (
-        <LoadMoreButton onClick={loadMore} loading={loading} />
+      {/* Load More Button */}
+      {hasMore && (
+        <div className="mt-6 text-center">
+          <button
+            onClick={onLoadMore}
+            className="px-4 py-2 bg-black text-white rounded-lg hover:bg-white hover:text-black border border-black transition-all duration-300"
+          >
+            Load More
+          </button>
+        </div>
       )}
     </div>
   );
 }
 
 export default ProductExplorer;
+
