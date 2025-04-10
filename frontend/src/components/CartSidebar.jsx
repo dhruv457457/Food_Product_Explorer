@@ -11,6 +11,7 @@ function CartSidebar({ isOpen, onClose }) {
         isOpen ? "translate-x-0" : "translate-x-full"
       }`}
     >
+      {/* Header */}
       <div className="p-4 border-b flex justify-between items-center">
         <h2 className="text-lg font-semibold">Your Cart</h2>
         <button onClick={onClose} className="text-gray-500 hover:text-gray-700">
@@ -18,6 +19,7 @@ function CartSidebar({ isOpen, onClose }) {
         </button>
       </div>
 
+      {/* Cart Items */}
       <div className="p-4 space-y-4 overflow-y-auto max-h-[70vh]">
         {cartItems.length === 0 ? (
           <p className="text-gray-500 text-sm">Your cart is empty.</p>
@@ -57,6 +59,7 @@ function CartSidebar({ isOpen, onClose }) {
         )}
       </div>
 
+      {/* Clear Cart Button */}
       {cartItems.length > 0 && (
         <div className="p-4 border-t">
           <button

@@ -1,7 +1,4 @@
 import React from "react";
-import Loader from "./Loader";
-import LoadMoreButton from "./LoadMoreButton";
-import ProductGrid from "./ProductGrid";
 import ProductCard from "./ProductCard";
 
 function ProductExplorer({ products, loading, error, hasMore, onLoadMore }) {
@@ -10,10 +7,10 @@ function ProductExplorer({ products, loading, error, hasMore, onLoadMore }) {
 
   return (
     <div className="w-full">
-      {/* Responsive Grid Layout */}
-      <div className="grid grid-cols-2 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+      {/* Render Product Cards */}
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
         {products.map((product) => (
-          <ProductCard key={product.id} product={product} />
+          <ProductCard key={product.id || product.code} product={product} />
         ))}
       </div>
 
